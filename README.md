@@ -1,9 +1,11 @@
 # Supabase Fuzzy Bunny Organizer
 
-## Learning Objectives
+## ORDER OF OPERATIONS
 
--   In response to a user event, make a fetch call to delete an item in the array and display the new state to the user (i.e., delete a todo).
--   Create foreign key relationships in Supabase and fetch related data using a single query
+-   sign up, sign in (redirect to create)
+-   CREATE PAGE: adding bunny name to family (on submit, redirect to family page)
+-   FAMILY PAGE: display families with each member
+-   FAMILY PAGE: user can delete member on click
 
 ## Demo
 
