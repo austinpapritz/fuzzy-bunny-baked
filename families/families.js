@@ -1,5 +1,5 @@
 import { checkAuth, deleteBunny, getFamilies, logout } from '../fetch-utils.js';
-import { renderFamilies } from './render-utils.js';
+import { renderBunnies, renderFamilies } from './render-utils.js';
 
 checkAuth();
 
@@ -35,7 +35,12 @@ async function displayFamilies() {
     // append the familyEl to the familiesEl
     for (let family of families) {
         const familyEl = renderFamilies(family);
-        familiesEl.append(familyEl);
+
+        for (let bunny of family.fuzzy_bunnies) {
+            const bunnyEl = renderBunnies(bunny);
+            familyEl.append(bunnyEl);
+            familiesEl.append(familyEl);
+        }
     }
 }
 

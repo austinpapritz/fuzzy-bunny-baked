@@ -9,3 +9,20 @@ export function renderFamilies(family) {
 
     return divEl;
 }
+
+export function renderBunnies(bunny) {
+    const bunniesDiv = document.createElement('div');
+    bunniesDiv.classList.add('bunnies');
+
+    const bunnyDiv = document.createElement('div');
+    bunnyDiv.classList.add('bunny');
+    bunnyDiv.textContent = bunny.name;
+
+    // bunnyDiv.addEventListener('click', async () => {
+
+    // });
+
+    bunniesDiv.append(bunnyDiv);
+
+    return bunniesDiv;
+}
