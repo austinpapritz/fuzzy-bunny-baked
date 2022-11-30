@@ -1,3 +1,6 @@
+import { deleteBunny } from '../fetch-utils.js';
+import { displayFamilies } from './families.js';
+
 export function renderFamilies(family) {
     const divEl = document.createElement('div');
     divEl.classList.add('family');
@@ -18,9 +21,10 @@ export function renderBunnies(bunny) {
     bunnyDiv.classList.add('bunny');
     bunnyDiv.textContent = bunny.name;
 
-    // bunnyDiv.addEventListener('click', async () => {
-
-    // });
+    bunnyDiv.addEventListener('click', async () => {
+        await deleteBunny(bunny.id);
+        displayFamilies();
+    });
 
     bunniesDiv.append(bunnyDiv);
 
