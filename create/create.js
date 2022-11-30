@@ -11,12 +11,13 @@ form.addEventListener('submit', async (e) => {
     const name = data.get('bunny-name');
     const family = data.get('family-id');
     // use createBunny to create a bunny with this name and family id
-    await createBunny(name);
+    await createBunny(name, family);
     form.reset();
 });
 
 window.addEventListener('load', async () => {
     // let's dynamically fill in the families dropdown from supabase
+    await getFamilies();
     // grab the select HTML element from the DOM
     // go get the families from supabase
     // for each family
