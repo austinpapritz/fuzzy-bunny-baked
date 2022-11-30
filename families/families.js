@@ -9,9 +9,11 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
-function displayFamilies() {
+async function displayFamilies() {
     // fetch families from supabase
+    const families = await getFamilies();
     // clear out the familiesEl
+    familiesEl.innerHTML = '';
     // loop through each family and for each family:
     // create three elements for each family, one for the whole family, one to hold the name, and one to hold the bunnies
     // your HTML Element should look like this:
@@ -30,6 +32,9 @@ function displayFamilies() {
     // append this bunnyEl to the bunniesEl
     // append the bunniesEl and nameEl to the familyEl
     // append the familyEl to the familiesEl
+    for (let family of families) {
+        console.log(family, 'family');
+    }
 }
 
 window.addEventListener('load', async () => {
