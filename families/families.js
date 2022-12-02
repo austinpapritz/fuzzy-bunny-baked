@@ -1,4 +1,5 @@
-import { checkAuth, deleteBunny, getFamilies, logout } from '../fetch-utils.js';
+import { checkAuth, deleteBunny, getFamilies, getUserID, logout } from '../fetch-utils.js';
+import { renderBunnies, renderFamilies } from './render-utils.js';
 
 checkAuth();
 
@@ -9,9 +10,11 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
-function displayFamilies() {
+export async function displayFamilies() {
     // fetch families from supabase
+    const families = await getFamilies();
     // clear out the familiesEl
+    familiesEl.innerHTML = '';
     // loop through each family and for each family:
     // create three elements for each family, one for the whole family, one to hold the name, and one to hold the bunnies
     // your HTML Element should look like this:
@@ -30,6 +33,15 @@ function displayFamilies() {
     // append this bunnyEl to the bunniesEl
     // append the bunniesEl and nameEl to the familyEl
     // append the familyEl to the familiesEl
+    for (let family of families) {
+        const familyEl = renderFamilies(family);
+
+        for (let bunny of family.fuzzy_bunnies) {
+            const bunnyEl = renderBunnies(bunny);
+            familyEl.append(bunnyEl);
+            familiesEl.append(familyEl);
+        }
+    }
 }
 
 window.addEventListener('load', async () => {
