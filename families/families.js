@@ -1,4 +1,4 @@
-import { checkAuth, deleteBunny, getFamilies, logout } from '../fetch-utils.js';
+import { checkAuth, deleteBunny, getFamilies, getUserID, logout } from '../fetch-utils.js';
 import { renderBunnies, renderFamilies } from './render-utils.js';
 
 checkAuth();

@@ -9,9 +9,17 @@ export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
 
+export function getUserID() {
+    const user = client.auth.session().user;
+    return user.id;
+}
+
 export async function getFamilies() {
     // fetch all families and their bunnies
-    const response = await client.from('loving_families').select('*, fuzzy_bunnies(*)');
+    const response = await client
+        .from('loving_families')
+        .select('*, fuzzy_bunnies(*)')
+        .match({ 'fuzzy_bunnies.user_id': client.auth.session().user.id });
     return checkError(response);
 }
 
